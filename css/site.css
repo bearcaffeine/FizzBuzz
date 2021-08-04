@@ -1,8 +1,9 @@
 :root{
-    --primary-color: #1d5888;
+    --primary-color: #513826;
     --secondary-color: #ff993b;
     --dark-color: #292929;
     --white-color: #e7e7e7;
+    --theme-color: #513826;
 }
 
 body{
@@ -10,11 +11,11 @@ body{
 }
 
 nav{
-    background-color: var(--dark-color);
+    background-color: var(--theme-color);
 }
 
 footer{
-    background-color: var(--dark-color);
+    background-color: var(--theme-color);
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -53,6 +54,19 @@ footer .social>a:hover{
 
 .checklist >li i{
     color: var(--secondary-color)
+}
+
+.Fizz{
+    color: darkgreen;
+}
+
+.Buzz{
+    color: darkblue;
+}
+
+.FizzBuzz{
+    color: red;
+    font-weight: bold;
 }
 
 code[class*="language-"],

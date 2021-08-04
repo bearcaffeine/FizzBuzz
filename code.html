@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project by Brad Costello</title>
+    <title>FIZZ BUZZ: A Coding Project by Brad Costello</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,7 +24,7 @@
     <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"><img src="img/BC_white_mark.svg" class="d-line-block align-text-top"
-                    alt="Brad Costello Logo" width="30" and height="29"> APP NAME</a>
+                    alt="Brad Costello Logo" width="30" and height="29"> FIZZ BUZZ</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -41,7 +41,7 @@
                         <a class="nav-link active" aria-current="page" href="/code.html">The Code</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="https://github.com/bearcaffeine/JSSiteTemplate">Git
+                        <a class="nav-link" target="_blank" href="https://github.com/bearcaffeine/FizzBuzz">Git
                             Repo</a>
                     </li>
                     <li class="nav-item">
@@ -55,21 +55,91 @@
 
     <main class="flex-shrink-0">
         <div class="container py-5 px-5 mt-5">
-            <h2 class="border-1 border-bottom border-dark">The Code for APP NAME.</h2>
+            <h2 class="border-1 border-bottom border-dark">The Code for FIZZ BUZZ.</h2>
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col-lg-8">
                     <pre class="line-numbers"><code class="language-javascript">
-                            //Call Hello World
-                            function HelloWorld(){
-                                alert("hello world");
+                        function getValues(){
+                            
+                            let fizzValue = document.getElementById("fizzValue").value;
+                            let buzzValue = document.getElementById("buzzValue").value;
+                    
+                            fizzValue = parseInt(fizzValue);
+                            buzzValue = parseInt(buzzValue);
+                        
+                            if(Number.isInteger(fizzValue) && Number.isInteger(buzzValue))    {
+                                let fbData = FizzBuzz(fizzValue, buzzValue);
+
+                                displayData(fbData);
+                            } else {
+                                alert("You must enter integers");
                             }
+                        }
+                        
+                        function FizzBuzz(value1, value2) {
+                            
+                            let returnArray = [];
+                        
+                            for(let index = 1; index <= 100; index++){
+                                
+                                if(index % value1 == 0 && index % value2 == 0){
+                                    returnArray.push("FizzBuzz");  
+                                } 
+                                else if(index % value1 == 0){
+                                    returnArray.push("Fizz");   
+                                } 
+                                else if(index % value2 == 0){
+                                    returnArray.push("Buzz");
+                                } 
+                                else
+                                {
+                                    returnArray.push(index);
+                                } 
+                            }
+                            
+                            return returnArray; 
+                        }
+                        
+                        function displayData(fbData) {
+
+                            let tableBody = document.getElementById("results");
+                            let templateRow = document.getElementById("fbTemplate");
+
+                            tableBody.innerHTML = "";
+                        
+                            for (let i = 0; i < fbData.length; i += 5) {
+                                const tableRow = document.importNode(templateRow.content, true);
+
+                                rowCols = tableRow.querySelectorAll("td");
+                        
+                                rowCols[0].classList.add(fbData[i]);
+                                rowCols[0].textContent = fbData[i];
+                               
+                                rowCols[1].classList.add(fbData[i+ 1]);
+                                rowCols[1].textContent = fbData[i + 1];
+                               
+                                rowCols[2].classList.add(fbData[i+2]);
+                                rowCols[2].textContent = fbData[i + 2];
+                               
+                                rowCols[3].classList.add(fbData[i+3]);
+                                rowCols[3].textContent = fbData[i + 3];
+                               
+                                rowCols[4].classList.add(fbData[i+4]);
+                                rowCols[4].textContent = fbData[i + 4];
+                        
+                                tableBody.appendChild(tableRow);
+                            }
+                        }
                     </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>The Code is structed in one function.</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a function that displays an alert with a message of "Hello World".</p>
+                    <h5>getValues()</h5>
+                    <p>In getValues function we get the fizz and buzz values from the app page. Next we validate that the fizz and buzz values are integers. Once we have validated that fizz and buzz are integers we pass those values to FizzBuzz function to complete the logic of if the values between 1 to 100 are either a multiple of 3 or 5 or both. Once the fizz buzz logic is completed we pass the array of results to displayData function.</p>
+                    <h5>FizzBuzz()</h5>
+                    <p>In the FizzBuzz function we use the modules operations to determine if the value being processed is either a multple of 3, which is assigned Fizz, a multiple of 5, which is assigned Buzz, or a multiple of both 3 and 5, which is assigned FizzBuzz. The results for each number between 1 to 100 is stored in an array and that array is passed back to getValues function.</p>
+                    <h5>displayData()</h5>
+                    <p>In displayData function we use the HTML template element to store the table format that we will copy and insert the array from getValues function. The template element is designed to have 5 columns per row so the data is presented a better format than one column down the web page.</p>
                 </div>
             </div>
         </div>
