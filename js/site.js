@@ -33,7 +33,7 @@ function getValues(){
         //DO:
         //Use "let" to declare a variable "fbData".
         //Set it equal to the result of FizzBuzz(fizzValue, buzzValue)
-        let fbData = fizzBuzzC(fizzValue, buzzValue);
+        let fbData = fizzBuzz(fizzValue, buzzValue);
         
         //7. we call displayNumbers
         //DO:
