@@ -33,7 +33,7 @@ function getValues(){
         //DO:
         //Use "let" to declare a variable "fbData".
         //Set it equal to the result of FizzBuzz(fizzValue, buzzValue)
-        let fbData = FizzBuzz(fizzValue, buzzValue);
+        let fbData = fizzBuzzC(fizzValue, buzzValue);
         
         //7. we call displayNumbers
         //DO:
@@ -103,6 +103,48 @@ function FizzBuzz(value1, value2) {
     //Finally return the variable "returnArray"
     return returnArray;
     
+}
+
+//Option 2 for handling the Fizz Buzz logic using a switch statement
+function FizzBuzzB(fizzValue, buzzValue) {
+    let returnArray = [];
+    let Fizz = false;
+    let Buzz = false;
+
+    for (let i = 1; i <= 100; i++) {
+        Fizz = i % fizzValue == 0;
+        Buzz = i % buzzValue == 0;
+
+        switch (true) {
+            case Fizz && Buzz: {
+                returnArray.push("FizzBuzz");
+                break;
+            }
+            case Fizz: {
+                returnArray.push("Fizz");
+                break;
+            }
+            case Buzz: {
+                returnArray.push("Buzz");
+                break;
+            }
+            default: {
+                returnArray.push(i);
+            }
+        }
+    }
+    return returnArray;
+}
+
+//Option 3 for handling the Fizz Buzz logic using Conditional (ternary) operator
+function fizzBuzzC(fizzValue, buzzValue) {
+    let returnArray = [];
+
+    for (let i = 1; i <= 100; i++) {
+        let value = ((i % fizzValue == 0 ? 'Fizz' : '') + (i % buzzValue == 0 ? 'Buzz' : '') || i);
+        returnArray.push(value);
+    }
+    return returnArray;
 }
 
 //custom display function
